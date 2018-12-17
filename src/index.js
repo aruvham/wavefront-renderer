@@ -1,3 +1,7 @@
+import africanHead from './models/african-head';
+import Model from './model';
+import { vec3 } from 'gl-matrix';
+
 const model = new Model(africanHead);
 const canvasEle = document.querySelector('.canvas');
 const ctx = canvasEle.getContext('2d', { alpha: false });

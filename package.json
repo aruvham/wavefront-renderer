@@ -1,0 +1,26 @@
+{
+  "name": "wavefront-renderer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "gl-matrix": "^2.8.1"
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.1.2",
+    "webpack": "^4.27.1"
+  },
+  "scripts": {
+    "start": "webpack -d --w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aruvham/wavefront-renderer.git"
+  },
+  "author": "Arturo Ruvalcaba",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aruvham/wavefront-renderer/issues"
+  },
+  "homepage": "https://github.com/aruvham/wavefront-renderer#readme"
+}

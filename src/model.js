@@ -1,14 +1,13 @@
-class Model {
-  constructor(file, format = 'wavefront') {
+import { vec3 } from 'gl-matrix';
+
+export default class Model {
+  constructor(file) {
     this.vertices = [];
     this.faces = [];
-    
-    if (format === 'wavefront') {
-      this.parseWavefront(file);
-    }
+    this.parseFile(file);
   }
   
-  parseWavefront(file) {
+  parseFile(file) {
     let lines = file.split('\n');
     lines = lines.map(line => line.split(' '));
     
