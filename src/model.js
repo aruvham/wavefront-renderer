@@ -2,7 +2,11 @@ import { vec3 } from 'gl-matrix';
 
 export default class Model {
   constructor(file) {
-    this.vertices = [];
+    this.scale = 350;
+    this.offsetX = 400;
+    this.offsetY = 400;
+    this.modelVertices = [];
+    this.worldVertices = [];
     this.faces = [];
     this.parseFile(file);
   }
@@ -13,11 +17,12 @@ export default class Model {
     
     lines.forEach(line => {
       if (line[0] === 'v') {
-        this.vertices.push({
-          x: (parseFloat(line[1]) * 350) + 400,
-          y: -(parseFloat(line[2]) * 350) + 400,
-          z: parseFloat(line[3]),
-        });
+        this.modelVertices.push(vec3.fromValues(line[1], line[2], line[3]));
+        this.worldVertices.push(vec3.fromValues(
+          (line[1] * this.scale) + this.offsetX,
+          (line[2] * -this.scale) + this.offsetY,
+          line[3],
+        ));
       } else if (line[0] === 'f') {
         this.faces.push([
           line[1].split('/')[0] - 1,
