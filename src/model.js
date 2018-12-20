@@ -1,5 +1,4 @@
 import { vec2, vec3 } from 'gl-matrix';
-import { runInThisContext } from 'vm';
 
 export default class Model {
   constructor(file, scale = 1, position = vec2.fromValues(0, 0)) {
@@ -29,7 +28,7 @@ export default class Model {
       const vertex = this.modelVertices[i];
       this.worldVertices.push(vec3.fromValues(
         (vertex[0] * this.scale) + this.position[0],
-        -(vertex[1] * this.scale) + this.position[1],
+        (vertex[1] * this.scale) + this.position[1],
         (vertex[2] * this.scale) + this.position[2],
       ));
     }
@@ -44,7 +43,7 @@ export default class Model {
         this.modelVertices.push(vec3.fromValues(line[1], line[2], line[3]));
         this.worldVertices.push(vec3.fromValues(
           (line[1] * this.scale) + this.position[0],
-          -(line[2] * this.scale) + this.position[1],
+          (line[2] * this.scale) + this.position[1],
           (line[2] * this.scale) + this.position[2],
         ));
       } else if (line[0] === 'f') {
